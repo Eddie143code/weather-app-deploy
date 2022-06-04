@@ -34,7 +34,8 @@ const getAllCities = async (req, res) => {
 const deleteAllCities = async (req, res) => {
   const cities = await Cities.deleteMany({ user: req.user.userId });
   if (!cities) {
-    throw new Error("No cities to delete");
+    res.status(400);
+    res.json();
   }
 
   res.status(200).send("successfully deleted");
