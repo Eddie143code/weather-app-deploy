@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const API_URL = "/api/auth/";
+const API_URL = "http://localhost:5000/api/auth/";
 
 const Registration = ({ user, setUser }) => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const { name, email, password } = form;
+
+  const [invalid, setInvalid] = useState("");
 
   const navigate = useNavigate();
 
@@ -26,11 +28,13 @@ const Registration = ({ user, setUser }) => {
       if (response.data) {
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
+        setInvalid("");
       }
 
       return response.data;
     } catch (error) {
       setUser("");
+      setInvalid(true);
       return error;
     }
   };
@@ -76,6 +80,13 @@ const Registration = ({ user, setUser }) => {
           submit
         </button>
       </form>
+      <div className="flex m-0 h-8 w-60 justify-center">
+        {invalid && (
+          <span className="flex font-bold text-red-600">
+            Invalid credentials
+          </span>
+        )}
+      </div>
       <div className="flex m-0 h-8 justify-center">
         <Link className="button-33" to="/Register">
           Login

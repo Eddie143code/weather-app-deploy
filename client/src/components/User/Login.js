@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../index.css";
 
-const API_URL = "/api/auth/";
+const API_URL = "http://localhost:5000/api/auth/";
 
 const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [invalid, setInvalid] = useState("");
 
   const navigate = useNavigate();
 
@@ -26,11 +28,11 @@ const Login = ({ user, setUser }) => {
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
       }
-
+      setInvalid("");
       return response.data;
     } catch (error) {
       setUser("");
-
+      setInvalid(true);
       return error;
     }
   };
@@ -59,7 +61,13 @@ const Login = ({ user, setUser }) => {
           submit
         </button>
       </form>
-
+      <div className="flex m-0 h-8 w-60 justify-center">
+        {invalid && (
+          <span className="flex font-bold text-red-600">
+            Invalid credentials
+          </span>
+        )}
+      </div>
       <div className="flex m-0 h-8 justify-center">
         <Link className="button-33" to="/Register">
           Register
