@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../index.css";
 
-const API_URL = "http://localhost:5000/api/auth/";
+const API_URL = "/api/auth/";
 
 const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState("");

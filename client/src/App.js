@@ -119,7 +119,7 @@ function App() {
     setGetStart(!getStart);
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
-      const response = await axios.get("http://localhost:5000/api/cities/", {
+      const response = await axios.get("/api/cities/", {
         headers: {
           authorization: `Bearer ${acc.token}`,
         },
@@ -159,7 +159,7 @@ function App() {
     setWeatherData([]);
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
-      await axios.delete("http://localhost:5000/api/cities/", {
+      await axios.delete("/api/cities/", {
         headers: {
           authorization: `Bearer ${acc.token}`,
         },
@@ -185,7 +185,7 @@ function App() {
         const acc = JSON.parse(localStorage.getItem("account"));
 
         try {
-          await axios.post("http://localhost:5000/api/cities/", details, {
+          await axios.post("/api/cities/", details, {
             headers: {
               authorization: `Bearer ${acc.token}`,
             },
@@ -253,8 +253,6 @@ function App() {
   // Used to fetch api data and save variables in session
   useEffect(() => {
     fetchCity();
-    if (localStorage.getItem("data") !== null) {
-    }
 
     sessionStorage.setItem("displayweather", displayWeather);
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/api/auth/";
+const API_URL = "/api/auth/";
 
 const Registration = ({ user, setUser }) => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
