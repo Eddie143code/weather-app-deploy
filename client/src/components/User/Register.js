@@ -67,7 +67,7 @@ const Registration = ({ user, setUser, failed, setFailed }) => {
         />
         <input
           className="flex"
-          type="text"
+          type="password"
           placeholder="password"
           name="password"
           value={password}
@@ -80,7 +80,13 @@ const Registration = ({ user, setUser, failed, setFailed }) => {
           submit
         </button>
       </form>
-      <div className="flex">{user && <span>Invalid credentials</span>}</div>
+      <div className="flex justify-center w-60 h-8">
+        {failed && (
+          <span className="flex font-bold text-red-600">
+            Invalid credentials
+          </span>
+        )}
+      </div>
       <div className="flex m-0 h-8 justify-center">
         <Link className="button-33" to="/Register">
           Login
