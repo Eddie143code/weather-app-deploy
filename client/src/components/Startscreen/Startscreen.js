@@ -1,7 +1,8 @@
-import Startscreenimage from "../Startscreenimage.svg";
-import "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
+import Startscreenimage from "../../icons/Startscreenimage.svg";
+import "../../index.css";
 
 const Startscreen = ({ onClick, user }) => {
   const startimage = Startscreenimage;
@@ -9,10 +10,11 @@ const Startscreen = ({ onClick, user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    const acc = localStorage.getItem("account");
+    if (!acc) {
       navigate("/Login");
     }
-  });
+  }, []);
 
   return (
     <div

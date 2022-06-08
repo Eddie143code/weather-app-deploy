@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const API_URL = "/api/auth/";
 
-const Registration = ({ user, setUser }) => {
+const Registration = ({ user, setUser, failed, setFailed }) => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const { name, email, password } = form;
@@ -22,8 +22,10 @@ const Registration = ({ user, setUser }) => {
       const userData = { name: name, email: email, password: password };
 
       const response = await axios.post(API_URL + "register", userData);
-
+      const user = response.data;
+      setUser(user);
       if (response.data) {
+        setFailed(false);
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
       }
@@ -31,6 +33,8 @@ const Registration = ({ user, setUser }) => {
       return response.data;
     } catch (error) {
       setUser("");
+      localStorage.setItem("user", user);
+      setFailed(true);
       return error;
     }
   };
@@ -76,6 +80,7 @@ const Registration = ({ user, setUser }) => {
           submit
         </button>
       </form>
+      <div className="flex">{user && <span>Invalid credentials</span>}</div>
       <div className="flex m-0 h-8 justify-center">
         <Link className="button-33" to="/Register">
           Login

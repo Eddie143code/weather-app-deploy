@@ -1,9 +1,9 @@
-import Searchbar from "./Search/Searchbar";
-import capitalcities from "./capitalcities";
+import Searchbar from "../Search/Searchbar";
+import capitalcities from "../capitalcities";
 import { BiArrowBack } from "react-icons/bi";
-import "../index.css";
-import WeatherSummaryView from "./WeatherSummary/WeatherSummaryView";
-import WeatherPreview from "./Preview/WeatherPreview";
+import "../../index.css";
+import WeatherSummaryView from "../WeatherSummary/WeatherSummaryView";
+import WeatherPreview from "../Preview/WeatherPreview";
 
 const Day = ({
   onKeyPress,
@@ -67,7 +67,7 @@ const Day = ({
           Refresh
         </button>
       </div>
-      <div className="flex flex-wrap bg-slate-50 rounded-2xl h-60 w-72 justify-center justify-around">
+      <div className="flex flex-wrap bg-slate-50 rounded-2xl h-60 w-72 justify-center">
         {weatherData.map((data, i) => {
           return (
             <WeatherSummaryView

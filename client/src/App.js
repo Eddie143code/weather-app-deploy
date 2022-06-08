@@ -1,16 +1,17 @@
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import Day from "./components/Day";
+import Day from "./components/Day/Day";
 import Login from "./components/User/Login";
 import Register from "./components/User/Register";
+import Startscreen from "./components/Startscreen/Startscreen";
 
 import capitalcities from "./components/capitalcities";
-import Startscreen from "./components/Startscreen";
-import Sunny from "./Sunny.svg";
-import Cloudy from "./Cloudy.svg";
-import Rain from "./Rain.svg";
-import Snow from "./Snow.svg";
+
+import Sunny from "./icons/Sunny.svg";
+import Cloudy from "./icons/Cloudy.svg";
+import Rain from "./icons//Rain.svg";
+import Snow from "./icons/Snow.svg";
 
 import "./index.css";
 
@@ -38,7 +39,9 @@ function App() {
 
   const [info, setInfo] = useState(false);
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(localStorage.setItem("user", ""));
+
+  const [failed, setFailed] = useState("");
 
   // function that fetches information from api and stores it as an object in the weatherData array
 
@@ -250,6 +253,8 @@ function App() {
     });
   };
 
+  // login user session
+
   // Used to fetch api data and save variables in session
   useEffect(() => {
     fetchCity();
@@ -291,11 +296,25 @@ function App() {
           />
           <Route
             path="/Register"
-            element={<Register user={user} setUser={setUser} />}
+            element={
+              <Register
+                user={user}
+                setUser={setUser}
+                failed={failed}
+                setFailed={setFailed}
+              />
+            }
           />
           <Route
             path="/Login"
-            element={<Login user={user} setUser={setUser} />}
+            element={
+              <Login
+                user={user}
+                setUser={setUser}
+                failed={failed}
+                setFailed={setFailed}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>
