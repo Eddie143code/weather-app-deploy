@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 import Startscreenimage from "../../icons/Startscreenimage.svg";
 import "../../index.css";
 
-const Startscreen = ({ onClick, user }) => {
+const Startscreen = ({ onClick, user, logout }) => {
   const startimage = Startscreenimage;
 
   const navigate = useNavigate();
@@ -14,14 +14,19 @@ const Startscreen = ({ onClick, user }) => {
     if (!acc) {
       navigate("/Login");
     }
-  }, []);
+  }, [user]);
 
   return (
-    <div
+    <section
       className="flex-wrap items-center justify-center 
       m-auto bg-violet-200 border-0 rounded-2xl h-135 w-75 "
     >
-      <div className="flex items-center justify-center m-auto p-10">
+      <div className="flex justify-end">
+        <button className="flex button-33 h-8 top-2" onClick={logout}>
+          Sign out
+        </button>
+      </div>
+      <div className="flex items-center justify-center m-auto p-6">
         <img src={startimage} width="220" height="220" alt="img" />
       </div>
       <div className="flex-wrap bg-white rounded-lg mt-8 mx-3">
@@ -36,7 +41,7 @@ const Startscreen = ({ onClick, user }) => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

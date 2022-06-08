@@ -39,7 +39,7 @@ function App() {
 
   const [info, setInfo] = useState(false);
 
-  const [user, setUser] = useState(localStorage.setItem("user", ""));
+  const [user, setUser] = useState(localStorage.getItem("user", ""));
 
   const [failed, setFailed] = useState("");
 
@@ -253,6 +253,11 @@ function App() {
     });
   };
 
+  const Logout = () => {
+    setUser("");
+    localStorage.clear();
+  };
+
   // login user session
 
   // Used to fetch api data and save variables in session
@@ -273,7 +278,11 @@ function App() {
             element={
               <>
                 {getStart ? (
-                  <Startscreen onClick={handleClick} user={user} />
+                  <Startscreen
+                    onClick={handleClick}
+                    user={user}
+                    logout={Logout}
+                  />
                 ) : (
                   <Day
                     city={city}

@@ -24,21 +24,26 @@ const Day = ({
   preview,
 
   onClickRefresh,
+  logout,
 }) => {
   return (
-    <div
+    <section
       className="flex flex-wrap items-center justify-center 
     m-auto bg-violet-200 border-0 rounded-2xl h-135 w-75"
     >
-      <div className="flex mr-14 p-2">
-        <button className="flex border-0 rounded-2xl" onClick={onClick}>
+      <div className="flex h-8 w-75 p-2">
+        <button className="flex border-0 rounded-2xl pr-4" onClick={onClick}>
           <BiArrowBack
             className="bg-transparent border-transparent"
             size="25px"
           />
         </button>
-        <span className="flex text-base pl-8">Saved Weather Cities</span>
+        <span className="flex text-sm pl-5">Saved Weather Cities</span>
+        <button className="flex button-33 h-8 left-3" onClick={logout}>
+          Sign out
+        </button>
       </div>
+      <div className="flex h-8 w-75 justify-end"></div>
 
       <div className="flex flex-wrap justify-center h-6 w-75">
         <Searchbar data={capitalcities} onKeyPress={onKeyPress} />
@@ -82,7 +87,7 @@ const Day = ({
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

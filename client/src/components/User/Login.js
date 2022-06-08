@@ -20,8 +20,8 @@ const Login = ({ user, setUser, failed, setFailed }) => {
     try {
       const userData = { email: email, password: password };
       const response = await axios.post(API_URL + "login", userData);
-      const user = response.data;
-      setUser(user);
+      setUser(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data));
       if (response.data) {
         setFailed(false);
         navigate("/");
@@ -30,7 +30,7 @@ const Login = ({ user, setUser, failed, setFailed }) => {
 
       return response.data;
     } catch (error) {
-      setUser("");
+      setUser({});
       localStorage.setItem("user", user);
       setFailed(true);
       return error;
