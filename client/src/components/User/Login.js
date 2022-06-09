@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { SpinningCircles } from "react-loading-icons";
 import "../../index.css";
 
 const API_URL = "/api/auth/";
 
-const Login = ({ user, setUser, failed, setFailed }) => {
+const Login = ({ user, setUser, failed, setFailed, loading, setLoading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,8 +19,10 @@ const Login = ({ user, setUser, failed, setFailed }) => {
     }
 
     try {
+      setLoading(true);
       const userData = { email: email, password: password };
       const response = await axios.post(API_URL + "login", userData);
+      setLoading(false);
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       if (response.data) {
@@ -27,9 +30,9 @@ const Login = ({ user, setUser, failed, setFailed }) => {
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
       }
-
       return response.data;
     } catch (error) {
+      setLoading(false);
       setUser({});
       localStorage.setItem("user", user);
       setFailed(true);
@@ -43,6 +46,10 @@ const Login = ({ user, setUser, failed, setFailed }) => {
       navigate("/");
     }
   }, []);
+
+  if (loading) {
+    return <SpinningCircles />;
+  }
 
   return (
     <section className="flex flex-wrap justify-center m-0 h-96 w-60 bg-slate-200">

@@ -1,4 +1,7 @@
-const WeatherPreview = ({ preview }) => {
+const WeatherPreview = ({ preview, loading }) => {
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <div className="flex-wrap border-solid h-22 w-24 border-2 border-slate-150 rounded-md bg-slate-100 shadow-2xl">

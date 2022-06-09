@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 
-import Startscreenimage from "../../icons/Startscreenimage.svg";
+import Startscreenimage from "../../WeatherIcons/cloudy.png";
 import "../../index.css";
 
 const Startscreen = ({ onClick, user, logout }) => {
@@ -19,15 +19,15 @@ const Startscreen = ({ onClick, user, logout }) => {
   return (
     <section
       className="flex-wrap items-center justify-center 
-      m-auto bg-violet-200 border-0 rounded-2xl h-135 w-75 "
+      m-auto bg-violet-100 border-0 rounded-2xl h-135 w-75 "
     >
       <div className="flex justify-end">
         <button className="flex button-33 h-8 top-2" onClick={logout}>
           Sign out
         </button>
       </div>
-      <div className="flex items-center justify-center m-auto p-6">
-        <img src={startimage} width="220" height="220" alt="img" />
+      <div className="flex items-center justify-center m-auto p-9">
+        <img src={startimage} width="200" height="200" alt="img" />
       </div>
       <div className="flex-wrap bg-white rounded-lg mt-8 mx-3">
         <div className="flex items-center justify-center p-6">

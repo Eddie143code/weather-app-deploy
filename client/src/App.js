@@ -8,10 +8,10 @@ import Startscreen from "./components/Startscreen/Startscreen";
 
 import capitalcities from "./components/capitalcities";
 
-import Sunny from "./icons/Sunny.svg";
-import Cloudy from "./icons/Cloudy.svg";
-import Rain from "./icons//Rain.svg";
-import Snow from "./icons/Snow.svg";
+import Sunny from "./WeatherIcons/sun.png";
+import Cloudy from "./WeatherIcons/cloudy.png";
+import Rain from "./WeatherIcons/rain.png";
+import Snow from "./WeatherIcons/snow.png";
 
 import "./index.css";
 
@@ -43,12 +43,15 @@ function App() {
 
   const [failed, setFailed] = useState("");
 
+  const [loading, setLoading] = useState("");
+
   // function that fetches information from api and stores it as an object in the weatherData array
 
   const fetchCity = () => {
     console.log("in fetch");
 
     if (city) {
+      setLoading(true);
       const url = `http://api.weatherapi.com/v1/current.json?key=49b3729be16b44f89da73548221803&q=${city}&aqi=no`;
       console.log("in fetch if statement");
       if (capitalcities.includes(city)) {
@@ -91,6 +94,7 @@ function App() {
               information = { ...information, image: Snow };
             } else {
             }
+            setLoading(false);
             if (weatherData.length > 3) {
             } else {
               setDisplayBlock(true);
@@ -204,6 +208,7 @@ function App() {
     let weatherRefresh = weatherData;
     let weatherRefreshData = [];
     setWeatherData([]);
+
     weatherRefresh.forEach((r) => {
       const url = `http://api.weatherapi.com/v1/current.json?key=49b3729be16b44f89da73548221803&q=${r.city}&aqi=no`;
 
@@ -246,6 +251,7 @@ function App() {
             information = { ...information, image: Snow };
           } else {
           }
+
           weatherRefreshData = [...weatherRefreshData, information];
           console.log("setWeather initiated");
           setWeatherData(weatherRefreshData);
@@ -270,7 +276,7 @@ function App() {
   }, [city]);
 
   return (
-    <main className="flex items-center justify-center bg-violet-400 bg-no-repeat bg-auto h-240 lg:w-477.5 md:w-238.75 ">
+    <main className="flex items-center justify-center bg-violet-300 bg-no-repeat bg-auto h-240 lg:w-477.5 md:w-238.75 ">
       <BrowserRouter>
         <Routes>
           <Route
@@ -298,6 +304,9 @@ function App() {
                     onClickadd={handleAdd}
                     preview={preview}
                     onClickRefresh={HandleRefresh}
+                    loading={loading}
+                    logout={Logout}
+                    user={user}
                   />
                 )}
               </>
@@ -311,6 +320,8 @@ function App() {
                 setUser={setUser}
                 failed={failed}
                 setFailed={setFailed}
+                loading={loading}
+                setLoading={setLoading}
               />
             }
           />
@@ -322,6 +333,8 @@ function App() {
                 setUser={setUser}
                 failed={failed}
                 setFailed={setFailed}
+                loading={loading}
+                setLoading={setLoading}
               />
             }
           />

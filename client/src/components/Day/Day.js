@@ -1,9 +1,12 @@
+import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Searchbar from "../Search/Searchbar";
 import capitalcities from "../capitalcities";
 import { BiArrowBack } from "react-icons/bi";
 import "../../index.css";
 import WeatherSummaryView from "../WeatherSummary/WeatherSummaryView";
 import WeatherPreview from "../Preview/WeatherPreview";
+import { SpinningCircles } from "react-loading-icons";
 
 const Day = ({
   onKeyPress,
@@ -25,11 +28,20 @@ const Day = ({
 
   onClickRefresh,
   logout,
+  loading,
+  user,
 }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const acc = localStorage.getItem("account");
+    if (!acc) {
+      navigate("/Login");
+    }
+  }, [user]);
   return (
     <section
       className="flex flex-wrap items-center justify-center 
-    m-auto bg-violet-200 border-0 rounded-2xl h-135 w-75"
+    m-auto bg-violet-100 border-0 rounded-2xl h-135 w-75"
     >
       <div className="flex h-8 w-75 p-2">
         <button className="flex border-0 rounded-2xl pr-4" onClick={onClick}>
@@ -49,7 +61,10 @@ const Day = ({
         <Searchbar data={capitalcities} onKeyPress={onKeyPress} />
       </div>
       <div className="flex flex-wrap h-28 w-75 items-center justify-center ">
-        {!error && preview && <WeatherPreview preview={preview} />}
+        {loading && <SpinningCircles />}
+        {!error && preview && (
+          <WeatherPreview preview={preview} loading={loading} />
+        )}
         {error && (
           <span className=" text-red-600 font-bold font-sans">
             Invalid input. Please enter the name of a capital city
