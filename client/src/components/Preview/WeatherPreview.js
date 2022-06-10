@@ -4,7 +4,7 @@ const WeatherPreview = ({ preview, loading }) => {
   }
   return (
     <>
-      <div className="flex-wrap border-solid h-22 w-24 border-2 border-slate-150 rounded-md bg-slate-100 shadow-2xl">
+      <div className="flex-wrap border-solid h-22 w-24 border-2 bg-slate-50 rounded-xl shadow-xl">
         <div className="flex text-sm">{preview.city}</div>
         <div className="flex">
           <span>

@@ -17,10 +17,7 @@ const WeatherSummaryView = ({
     <>
       {displayWeather && !error && displayBlock && (
         <>
-          <div
-            className="flex-wrap border-solid m-2 h-25 w-28 border-2 border-slate-150 rounded-md bg-slate-100 shadow-2xl"
-            onClick={handleInfo}
-          >
+          <div className="flex-wrap border-solid m-2 h-25 w-28 border-2 bg-slate-50 rounded-xl shadow-xl">
             <div className="flex text-sm">{city}</div>
             <div className="flex">
               <span>

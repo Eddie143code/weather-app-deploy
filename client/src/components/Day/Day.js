@@ -30,6 +30,7 @@ const Day = ({
   logout,
   loading,
   user,
+  refresh,
 }) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -51,12 +52,11 @@ const Day = ({
           />
         </button>
         <span className="flex text-sm pl-5">Saved Weather Cities</span>
-        <button className="flex button-33 h-8 left-3" onClick={logout}>
+        <button className="flex button-3 h-8 left-3" onClick={logout}>
           Sign out
         </button>
       </div>
       <div className="flex h-8 w-75 justify-end"></div>
-
       <div className="flex flex-wrap justify-center h-6 w-75">
         <Searchbar data={capitalcities} onKeyPress={onKeyPress} />
       </div>
@@ -71,37 +71,42 @@ const Day = ({
           </span>
         )}
       </div>
-
       <div className="flex h-8 w-75 justify-end">
-        <button className="button-2" onClick={onClickadd}>
+        <button className="button-34" onClick={onClickadd}>
           Add
         </button>
       </div>
-      <div className="flex  h-8 w-75 justify-end">
-        <button className="button-1" onClick={onClickclear}>
+      <div className="flex h-8 w-75 justify-end">
+        <button className="button-35" onClick={onClickclear}>
           Clear All
         </button>
       </div>
-      <div className="flex  h-8 w-75 justify-end">
-        <button className="button-3" onClick={onClickRefresh}>
+      <div className="flex h-8 w-75 justify-end">
+        <button className="button-36" onClick={onClickRefresh}>
           Refresh
         </button>
       </div>
-      <div className="flex flex-wrap bg-slate-50 rounded-2xl h-60 w-72 justify-center">
-        {weatherData.map((data, i) => {
-          return (
-            <WeatherSummaryView
-              key={i}
-              {...data}
-              displayBlock={displayBlock}
-              error={error}
-              displayWeather={displayWeather}
-              info={info}
-              handleInfo={handleInfo}
-            />
-          );
-        })}
-      </div>
+      <article className="flex flex-wrap bg-slate-50 border-0 rounded-3xl h-60 w-72 justify-center">
+        {refresh ? (
+          <div>
+            <SpinningCircles />
+          </div>
+        ) : (
+          weatherData.map((data, i) => {
+            return (
+              <WeatherSummaryView
+                key={i}
+                {...data}
+                displayBlock={displayBlock}
+                error={error}
+                displayWeather={displayWeather}
+                info={info}
+                handleInfo={handleInfo}
+              />
+            );
+          })
+        )}
+      </article>
     </section>
   );
 };

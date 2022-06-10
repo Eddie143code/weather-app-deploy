@@ -45,6 +45,8 @@ function App() {
 
   const [loading, setLoading] = useState("");
 
+  const [refresh, setRefresh] = useState("");
+
   // function that fetches information from api and stores it as an object in the weatherData array
 
   const fetchCity = () => {
@@ -96,6 +98,7 @@ function App() {
             }
             setLoading(false);
             if (weatherData.length > 3) {
+              return;
             } else {
               setDisplayBlock(true);
               setPreview(information);
@@ -112,7 +115,9 @@ function App() {
     setError(false);
     if (event.key === "Enter") {
       if (capitalcities.includes(event.target.value)) {
+        setDisplayBlock(true);
         setDisplayWeather(true);
+        setInfo(true);
         setCity(event.target.value);
       } else {
         setError(true);
@@ -143,9 +148,9 @@ function App() {
           image: r.image,
         };
       });
+
       setDisplayBlock(true);
       setDisplayWeather(true);
-
       setInfo(true);
       console.log(details);
       setWeatherData(details);
@@ -156,12 +161,9 @@ function App() {
   };
 
   const handleClickclear = async () => {
-    setCity("");
-
     setDisplayBlock(false);
     setDisplayWeather(false);
-
-    setInfo(false);
+    setCity("");
 
     setWeatherData([]);
     const acc = JSON.parse(localStorage.getItem("account"));
@@ -205,58 +207,64 @@ function App() {
   };
 
   const HandleRefresh = () => {
-    let weatherRefresh = weatherData;
-    let weatherRefreshData = [];
-    setWeatherData([]);
+    if (weatherData) {
+      setRefresh(true);
+      let weatherRefresh = weatherData;
+      let weatherRefreshData = [];
+      setWeatherData([]);
 
-    weatherRefresh.forEach((r) => {
-      const url = `http://api.weatherapi.com/v1/current.json?key=49b3729be16b44f89da73548221803&q=${r.city}&aqi=no`;
+      weatherRefresh.forEach((r) => {
+        const url = `http://api.weatherapi.com/v1/current.json?key=49b3729be16b44f89da73548221803&q=${r.city}&aqi=no`;
 
-      fetch(url)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          let information = {
-            city: r.city,
+        fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            let information = {
+              city: r.city,
 
-            temp: data.current.temp_c,
-            precip: data.current.precip_mm,
-            wind: data.current.wind_kph,
-            humid: data.current.humidity,
-            press: data.current.pressure_in,
-          };
+              temp: data.current.temp_c,
+              precip: data.current.precip_mm,
+              wind: data.current.wind_kph,
+              humid: data.current.humidity,
+              press: data.current.pressure_in,
+            };
 
-          if (
-            data.current.condition.text.includes("Sunny") ||
-            data.current.condition.text.includes("Clear")
-          ) {
-            information = { ...information, image: Sunny };
-          } else if (
-            data.current.condition.text.includes("Cloudy") ||
-            data.current.condition.text.includes("Partly") ||
-            data.current.condition.text.includes("Overcast") ||
-            data.current.condition.text.includes("Mist")
-          ) {
-            information = { ...information, image: Cloudy };
-          } else if (
-            data.current.condition.text.includes("Rain") ||
-            data.current.condition.text.includes("rain")
-          ) {
-            information = { ...information, image: Rain };
-          } else if (
-            data.current.condition.text.includes("Snow") ||
-            data.current.condition.text.includes("snow")
-          ) {
-            information = { ...information, image: Snow };
-          } else {
-          }
+            if (
+              data.current.condition.text.includes("Sunny") ||
+              data.current.condition.text.includes("Clear")
+            ) {
+              information = { ...information, image: Sunny };
+            } else if (
+              data.current.condition.text.includes("Cloudy") ||
+              data.current.condition.text.includes("Partly") ||
+              data.current.condition.text.includes("Overcast") ||
+              data.current.condition.text.includes("Mist")
+            ) {
+              information = { ...information, image: Cloudy };
+            } else if (
+              data.current.condition.text.includes("Rain") ||
+              data.current.condition.text.includes("rain")
+            ) {
+              information = { ...information, image: Rain };
+            } else if (
+              data.current.condition.text.includes("Snow") ||
+              data.current.condition.text.includes("snow")
+            ) {
+              information = { ...information, image: Snow };
+            } else {
+            }
+            setRefresh(false);
+            weatherRefreshData = [...weatherRefreshData, information];
 
-          weatherRefreshData = [...weatherRefreshData, information];
-          console.log("setWeather initiated");
-          setWeatherData(weatherRefreshData);
-        });
-    });
+            console.log("setWeather initiated");
+            setWeatherData(weatherRefreshData);
+          });
+      });
+    } else {
+      return;
+    }
   };
 
   const Logout = () => {
@@ -307,6 +315,7 @@ function App() {
                     loading={loading}
                     logout={Logout}
                     user={user}
+                    refresh={refresh}
                   />
                 )}
               </>

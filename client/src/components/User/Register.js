@@ -61,38 +61,35 @@ const Registration = ({
   }
 
   return (
-    <section className="flex flex-wrap justify-center m-0 h-96 w-60 bg-slate-200">
-      <header className="flex justify-center text-4xl w-60">Register</header>
+    <section className="flex flex-wrap justify-center m-0 h-96 w-75 bg-violet-100 border-0 rounded-2xl">
+      <header className="flex justify-center text-5xl w-60">Sign up</header>
       <form onSubmit={handleSubmit}>
         <input
-          className="flex"
+          className="flex m-2 p-2"
           type="text"
-          placeholder="name"
+          placeholder="Name"
           name="name"
           value={name}
           onChange={onChange}
         />
         <input
-          className="flex"
+          className="flex m-2 p-2"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           name="email"
           value={email}
           onChange={onChange}
         />
         <input
-          className="flex"
+          className="flex m-2 p-2"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           name="password"
           value={password}
           onChange={onChange}
         />
-        <button
-          className="flex justify-center bg-sky-500 button-3"
-          type="submit"
-        >
-          submit
+        <button className="flex justify-center left-3 button-33" type="submit">
+          Submit
         </button>
       </form>
       <div className="flex justify-center w-60 h-8">
@@ -103,8 +100,8 @@ const Registration = ({
         )}
       </div>
       <div className="flex m-0 h-8 justify-center">
-        <Link className="button-33" to="/Register">
-          Login
+        <Link className="button-3" to="/Login">
+          Sign in
         </Link>
       </div>
     </section>

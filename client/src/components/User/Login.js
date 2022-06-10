@@ -52,28 +52,25 @@ const Login = ({ user, setUser, failed, setFailed, loading, setLoading }) => {
   }
 
   return (
-    <section className="flex flex-wrap justify-center m-0 h-96 w-60 bg-slate-200">
-      <header className="flex justify-center text-4xl w-60">Login</header>
+    <section className="flex flex-wrap justify-center m-0 h-96 w-75 bg-violet-100 border-0 rounded-2xl">
+      <header className="flex justify-center text-5xl w-60">Sign in</header>
       <form onSubmit={handleSubmit}>
         <input
-          className="flex"
+          className="flex m-2 p-2"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="flex"
+          className="flex m-2 p-2"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          className="flex justify-center bg-sky-500 button-3"
-          type="submit"
-        >
-          submit
+        <button className="flex justify-center left-3 button-33" type="submit">
+          Submit
         </button>
       </form>
       <div className="flex justify-center w-60 h-8">
@@ -84,8 +81,8 @@ const Login = ({ user, setUser, failed, setFailed, loading, setLoading }) => {
         )}
       </div>
       <div className="flex m-0 h-8 justify-center">
-        <Link className="button-33" to="/Register">
-          Register
+        <Link className="button-3" to="/Register">
+          Sign up
         </Link>
       </div>
     </section>

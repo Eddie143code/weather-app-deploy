@@ -102,109 +102,9 @@ p:hover {
 }
 
 /* CSS */
-.button-1 {
-  background-color: #ea4c89;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  height: 30px;
-  line-height: 15px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-1:hover,
-.button-1:focus {
-  background-color: #f082ac;
-}
-
-.button-2 {
-  background-color: green;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  height: 30px;
-  line-height: 15px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-1:hover,
-.button-1:focus {
-  background-color: #f082ac;
-}
-
-.button-3 {
-  background-color: rgba(0, 0, 255, 0.788);
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  height: 30px;
-  line-height: 15px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-1:hover,
-.button-1:focus {
-  background-color: #f082ac;
-}
-
-/* CSS */
 .button-3 {
   appearance: none;
-
+  background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
@@ -257,7 +157,7 @@ p:hover {
 /* CSS */
 .button-33 {
   appearance: none;
-  background-color: #2ea44f;
+  background-color: blue;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
@@ -281,28 +181,186 @@ p:hover {
   white-space: nowrap;
 }
 
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
+.button-33:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;
 }
 
-.button-3:hover {
-  background-color: #2c974b;
+.button-33:hover {
+  background-color: blue;
 }
 
-.button-3:focus {
-  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+.button-33:focus {
+  box-shadow: rgba(48, 46, 164, 0.4) 0 0 0 3px;
   outline: none;
 }
 
-.button-3:disabled {
-  background-color: #94d3a2;
+.button-33:disabled {
+  background-color: #1f96b4;
   border-color: rgba(27, 31, 35, 0.1);
   color: rgba(255, 255, 255, 0.8);
   cursor: default;
 }
 
-.button-3:active {
-  background-color: #298e46;
+.button-33:active {
+  background-color: #29338e;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+/* CSS */
+.button-34 {
+  appearance: none;
+  background-color: rgb(230, 45, 39);
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-34:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-34:hover {
+  background-color: #a03c3c;
+}
+
+.button-34:focus {
+  box-shadow: rgb(156, 22, 22) 0 0 0 3px;
+  outline: none;
+}
+
+.button-34:disabled {
+  background-color: #c01f1f;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-34:active {
+  background-color: #8e2929;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+/* CSS */
+.button-35 {
+  appearance: none;
+  background-color: #d96be7;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-35:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-35:hover {
+  background-color: #ad3abd;
+}
+
+.button-35:focus {
+  box-shadow: rgba(157, 52, 167, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-35 :disabled {
+  background-color: #9221a1;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-35 :active {
+  background-color: #8822a7;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+.button-36 {
+  appearance: none;
+  background-color: #8d32e2;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-36:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-36:hover {
+  background-color: rgb(97, 6, 109);
+}
+
+.button-36:focus {
+  box-shadow: rgba(105, 12, 114, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-36:disabled {
+  background-color: #770c85;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-36:active {
+  background-color: #580970;
   box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
 }

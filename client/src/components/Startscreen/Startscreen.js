@@ -22,7 +22,7 @@ const Startscreen = ({ onClick, user, logout }) => {
       m-auto bg-violet-100 border-0 rounded-2xl h-135 w-75 "
     >
       <div className="flex justify-end">
-        <button className="flex button-33 h-8 top-2" onClick={logout}>
+        <button className="flex button-3 h-8 top-2" onClick={logout}>
           Sign out
         </button>
       </div>
