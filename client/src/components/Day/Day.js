@@ -52,7 +52,10 @@ const Day = ({
           />
         </button>
         <span className="flex text-sm pl-5">Saved Weather Cities</span>
-        <button className="flex button-3 h-8 left-3" onClick={logout}>
+        <button
+          className="flex button-3 h-8 left-3.5 bottom-2"
+          onClick={logout}
+        >
           Sign out
         </button>
       </div>
@@ -72,17 +75,17 @@ const Day = ({
         )}
       </div>
       <div className="flex h-8 w-75 justify-end">
-        <button className="button-34" onClick={onClickadd}>
+        <button className="button-34 w-20" onClick={onClickadd}>
           Add
         </button>
       </div>
       <div className="flex h-8 w-75 justify-end">
-        <button className="button-35" onClick={onClickclear}>
+        <button className="button-35 w-20" onClick={onClickclear}>
           Clear All
         </button>
       </div>
       <div className="flex h-8 w-75 justify-end">
-        <button className="button-36" onClick={onClickRefresh}>
+        <button className="button-36 w-20" onClick={onClickRefresh}>
           Refresh
         </button>
       </div>
