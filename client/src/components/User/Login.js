@@ -81,7 +81,13 @@ const Login = ({ user, setUser, failed, setFailed, loading, setLoading }) => {
         )}
       </div>
       <div className="flex m-0 h-8 justify-center">
-        <Link className="button-3" to="/Register">
+        <Link
+          className="button-3"
+          to="/register"
+          onClick={() => {
+            setFailed(false);
+          }}
+        >
           Sign up
         </Link>
       </div>

@@ -284,7 +284,7 @@ function App() {
   }, [city]);
 
   return (
-    <main className="flex items-center justify-center bg-violet-300 bg-no-repeat bg-auto h-240 lg:w-477.5 md:w-238.75 ">
+    <main className="flex items-center justify-center bg-violet-300 bg-no-repeat bg-auto h-240 lg:w-477.5 md:w-238.75 sm:119 ">
       <BrowserRouter>
         <Routes>
           <Route
@@ -322,7 +322,7 @@ function App() {
             }
           />
           <Route
-            path="/Register"
+            path="/register"
             element={
               <Register
                 user={user}
@@ -335,7 +335,7 @@ function App() {
             }
           />
           <Route
-            path="/Login"
+            path="/login"
             element={
               <Login
                 user={user}

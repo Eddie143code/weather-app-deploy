@@ -36,7 +36,7 @@ const Day = ({
   useEffect(() => {
     const acc = localStorage.getItem("account");
     if (!acc) {
-      navigate("/Login");
+      navigate("/login");
     }
   }, [user]);
   return (
