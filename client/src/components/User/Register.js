@@ -18,6 +18,8 @@ const Registration = ({
 
   const navigate = useNavigate();
 
+  // Register for application
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !password) {

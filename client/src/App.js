@@ -17,6 +17,7 @@ import "./index.css";
 
 function App() {
   // initiate variables in state
+
   const [getStart, setGetStart] = useState(true);
 
   const [displayWeather, setDisplayWeather] = useState(
@@ -31,8 +32,6 @@ function App() {
 
   const [city, setCity] = useState("");
 
-  /* const [condition, setCondition] = useState("") */
-
   const [preview, setPreview] = useState("");
 
   const [weatherData, setWeatherData] = useState([]);
@@ -46,6 +45,58 @@ function App() {
   const [loading, setLoading] = useState("");
 
   const [refresh, setRefresh] = useState("");
+
+  // Button to change from start screen to searching for cities screen and back
+
+  const handleClick = async () => {
+    setGetStart(!getStart);
+    const acc = JSON.parse(localStorage.getItem("account"));
+    try {
+      const response = await axios.get("/api/cities/", {
+        headers: {
+          authorization: `Bearer ${acc.token}`,
+        },
+      });
+      const details = response.data.cities;
+      details.map((r) => {
+        return {
+          city: r.city,
+          temp: r.temp,
+          precip: r.precip,
+          wind: r.wind,
+          humid: r.humid,
+          press: r.press,
+          image: r.image,
+        };
+      });
+
+      setDisplayBlock(true);
+      setDisplayWeather(true);
+      setInfo(true);
+      console.log(details);
+      setWeatherData(details);
+      console.log(weatherData);
+    } catch (error) {
+      return error;
+    }
+  };
+
+  // function that takes input and if it is in the list of capital cities stores it in a variable called city
+
+  const handleInput = (event) => {
+    setError(false);
+    if (event.key === "Enter") {
+      if (capitalcities.includes(event.target.value)) {
+        setDisplayBlock(true);
+        setDisplayWeather(true);
+        setInfo(true);
+        setCity(event.target.value);
+      } else {
+        setError(true);
+        setCity("");
+      }
+    }
+  };
 
   // function that fetches information from api and stores it as an object in the weatherData array
 
@@ -102,63 +153,37 @@ function App() {
             } else {
               setDisplayBlock(true);
               setPreview(information);
-              // setWeatherData([...weatherData, information]);
             }
           });
       }
     }
   };
 
-  // function that takes input and if it is in the list of capital cities stores it in a variable called city
+  // Add to saved cities
 
-  const handleInput = (event) => {
-    setError(false);
-    if (event.key === "Enter") {
-      if (capitalcities.includes(event.target.value)) {
-        setDisplayBlock(true);
-        setDisplayWeather(true);
-        setInfo(true);
-        setCity(event.target.value);
-      } else {
-        setError(true);
+  const handleAdd = async () => {
+    if (weatherData.length < 4) {
+      if (preview) {
+        setWeatherData([...weatherData, preview]);
         setCity("");
+        const details = preview;
+        setPreview("");
+        const acc = JSON.parse(localStorage.getItem("account"));
+
+        try {
+          await axios.post("/api/cities/", details, {
+            headers: {
+              authorization: `Bearer ${acc.token}`,
+            },
+          });
+        } catch (error) {
+          return error;
+        }
       }
     }
   };
 
-  // Button to change from start screen to search screen and back
-  const handleClick = async () => {
-    setGetStart(!getStart);
-    const acc = JSON.parse(localStorage.getItem("account"));
-    try {
-      const response = await axios.get("/api/cities/", {
-        headers: {
-          authorization: `Bearer ${acc.token}`,
-        },
-      });
-      const details = response.data.cities;
-      details.map((r) => {
-        return {
-          city: r.city,
-          temp: r.temp,
-          precip: r.precip,
-          wind: r.wind,
-          humid: r.humid,
-          press: r.press,
-          image: r.image,
-        };
-      });
-
-      setDisplayBlock(true);
-      setDisplayWeather(true);
-      setInfo(true);
-      console.log(details);
-      setWeatherData(details);
-      console.log(weatherData);
-    } catch (error) {
-      return error;
-    }
-  };
+  // Clear all saved cities
 
   const handleClickclear = async () => {
     setDisplayBlock(false);
@@ -182,29 +207,7 @@ function App() {
     setInfo(!info);
   };
 
-  // if (!preview)
-
-  const handleAdd = async () => {
-    if (weatherData.length < 4) {
-      if (preview) {
-        setWeatherData([...weatherData, preview]);
-        setCity("");
-        const details = preview;
-        setPreview("");
-        const acc = JSON.parse(localStorage.getItem("account"));
-
-        try {
-          await axios.post("/api/cities/", details, {
-            headers: {
-              authorization: `Bearer ${acc.token}`,
-            },
-          });
-        } catch (error) {
-          return error;
-        }
-      }
-    }
-  };
+  // Refresh cities
 
   const HandleRefresh = () => {
     if (weatherData) {
@@ -267,14 +270,15 @@ function App() {
     }
   };
 
+  // Log out of account
+
   const Logout = () => {
     setUser("");
     localStorage.clear();
   };
 
-  // login user session
-
   // Used to fetch api data and save variables in session
+
   useEffect(() => {
     fetchCity();
 

@@ -12,6 +12,8 @@ const Login = ({ user, setUser, failed, setFailed, loading, setLoading }) => {
 
   const navigate = useNavigate();
 
+  // Log in
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {

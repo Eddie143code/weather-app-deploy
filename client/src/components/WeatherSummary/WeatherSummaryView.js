@@ -6,7 +6,6 @@ const WeatherSummaryView = ({
   wind,
   humid,
   press,
-
   displayWeather,
   error,
   info,

@@ -1,17 +1,5 @@
 const Cities = require("../models/citiesModel");
 
-//   const createCities = async (req, res) => {
-//       res.status(200).send("create a city");
-//   };
-//
-//   const deleteAllCities = async (req, res) => {
-//       res.status(200).send("delete all cities");
-//   };
-//
-//   const getAllCities = async (req, res) => {
-//       res.status(200).send("get all cities");
-//   };
-
 const createCities = async (req, res) => {
   const city = await Cities.create({
     city: req.body.city,
