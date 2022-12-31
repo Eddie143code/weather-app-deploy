@@ -51,7 +51,7 @@ function App() {
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
       const response = await axios.get(
-        "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+        "https://weather-app-backend-u7e0.onrender.com/api/cities/",
         {
           headers: {
             authorization: `Bearer ${acc.token}`,
@@ -173,7 +173,7 @@ function App() {
 
         try {
           await axios.post(
-            "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+            "https://weather-app-backend-u7e0.onrender.com/api/cities/",
             details,
             {
               headers: {
@@ -199,7 +199,7 @@ function App() {
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
       await axios.delete(
-        "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+        "https://weather-app-backend-u7e0.onrender.com/api/cities/",
         {
           headers: {
             authorization: `Bearer ${acc.token}`,
