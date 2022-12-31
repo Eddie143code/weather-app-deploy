@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SpinningCircles } from "react-loading-icons";
-const API_URL = "/api/auth/";
+const API_URL = "https://weather-app-backend-u7e0.onrender.com/api/auth/";
 
 const Registration = ({
   user,

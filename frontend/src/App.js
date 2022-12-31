@@ -50,11 +50,14 @@ function App() {
     setGetStart(!getStart);
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
-      const response = await axios.get("/api/cities/", {
-        headers: {
-          authorization: `Bearer ${acc.token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+        {
+          headers: {
+            authorization: `Bearer ${acc.token}`,
+          },
+        }
+      );
       const details = response.data.cities;
       details.map((r) => {
         return {
@@ -169,11 +172,15 @@ function App() {
         const acc = JSON.parse(localStorage.getItem("account"));
 
         try {
-          await axios.post("/api/cities/", details, {
-            headers: {
-              authorization: `Bearer ${acc.token}`,
-            },
-          });
+          await axios.post(
+            "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+            details,
+            {
+              headers: {
+                authorization: `Bearer ${acc.token}`,
+              },
+            }
+          );
         } catch (error) {
           return error;
         }
@@ -191,11 +198,14 @@ function App() {
     setWeatherData([]);
     const acc = JSON.parse(localStorage.getItem("account"));
     try {
-      await axios.delete("/api/cities/", {
-        headers: {
-          authorization: `Bearer ${acc.token}`,
-        },
-      });
+      await axios.delete(
+        "https://weather-app-backend-u7e0.onrender.com//api/cities/",
+        {
+          headers: {
+            authorization: `Bearer ${acc.token}`,
+          },
+        }
+      );
     } catch (error) {
       return error;
     }
